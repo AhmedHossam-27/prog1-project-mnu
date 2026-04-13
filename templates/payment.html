@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment | StayBnB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f7f7f7; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .payment-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        .hotel-summary { background: #fff1f3; padding: 15px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #ff385c; }
+        h2 { color: #222; margin-top: 0; }
+        label { display: block; margin-bottom: 8px; font-weight: 500; color: #444; }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .row { display: flex; gap: 15px; }
+        .btn-confirm { background: #ff385c; color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-confirm:hover { background: #e31c5f; }
+        .back-link { display: block; text-align: center; margin-top: 15px; color: #717171; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="payment-card">
+    <div class="hotel-summary">
+        <h3 style="margin:0; color:#ff385c;">Booking Summary</h3>
+        <p style="margin:5px 0;">Hotel: <strong>{{ name }}</strong></p>
+        <p style="margin:0;">Total Price: <strong>${{ price }}</strong></p>
+    </div>
+
+    <h2>Payment Details</h2>
+    <form id="paymentForm">
+        <label><i class="fa-solid fa-user"></i> Cardholder Name</label>
+        <input type="text" placeholder="Ahmed Hossam" required>
+
+        <label><i class="fa-solid fa-credit-card"></i> Card Number</label>
+        <input type="text" placeholder="1234 5678 9101 1121" required>
+
+        <div class="row">
+            <div style="flex: 2;">
+                <label>Expiry Date</label>
+                <input type="text" placeholder="MM/YY" required>
+            </div>
+            <div style="flex: 1;">
+                <label>CVV</label>
+                <input type="text" placeholder="123" required>
+            </div>
+        </div>
+
+        <button type="button" class="btn-confirm" onclick="processPayment()">
+            Confirm & Pay ${{ price }}
+        </button>
+    </form>
+
+    <a href="/" class="back-link">Cancel and go back</a>
+</div>
+
+<script>
+    function processPayment() {
+        alert("Processing Payment for {{ name }}...");
+        setTimeout(() => {
+            alert("Success! Your booking is confirmed. Check your email.");
+            window.location.href = "/";
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>

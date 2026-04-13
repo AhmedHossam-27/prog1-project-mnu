@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ hotel.name }} | Experience Luxury</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --primary: #334155; 
+            --accent: #64748b; 
+            --bg: #f8fafc; 
+            --white: #ffffff;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            background-color: var(--white); 
+            color: #1e293b; 
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav-header { 
+            padding: 20px 8%; 
+            background: var(--white); 
+            border-bottom: 1px solid #f1f5f9; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-header a { 
+            text-decoration: none; 
+            color: var(--primary); 
+            font-weight: 600; 
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        /* Header Info */
+        .hotel-header h1 { font-size: 32px; margin-bottom: 10px; color: var(--primary); }
+        .location { color: var(--accent); margin-bottom: 25px; display: flex; align-items: center; gap: 8px; }
+
+        /* Main Image */
+        .main-img-wrapper { width: 100%; height: 500px; border-radius: 24px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .main-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Gallery Grid */
+        .section-title { font-size: 22px; font-weight: 700; margin: 40px 0 20px; border-left: 4px solid var(--primary); padding-left: 15px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-grid img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 16px; 
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+        .gallery-grid img:hover { transform: scale(1.02); }
+
+        /* Room Selection Cards */
+        .room-list { margin-top: 30px; }
+        .room-card { 
+            background: #f8fafc; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 20px; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            transition: 0.3s;
+        }
+        .room-card:hover { border-color: var(--primary); background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        .room-info h4 { margin: 0 0 8px 0; font-size: 18px; }
+        .status-badge { 
+            padding: 4px 12px; 
+            border-radius: 30px; 
+            font-size: 12px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+        }
+        .available { background: #dcfce7; color: #15803d; }
+        .limited { background: #fef9c3; color: #a16207; }
+        .soldout { background: #fee2e2; color: #b91c1c; opacity: 0.7; }
+
+        .price-tag { text-align: right; }
+        .price-tag .amount { font-size: 24px; font-weight: 800; color: var(--primary); display: block; }
+        .price-tag span { font-size: 12px; color: var(--accent); }
+
+        .btn-reserve { 
+            margin-top: 10px;
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 12px 24px; 
+            border-radius: 12px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: 0.3s;
+        }
+        .btn-reserve:hover:not(:disabled) { background: #1e293b; transform: translateY(-2px); }
+        .btn-reserve:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+        footer { text-align: center; padding: 60px 0; color: var(--accent); font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <a href="/"><i class="fa-solid fa-arrow-left"></i> Back to Exploration</a>
+    </div>
+
+    <div class="container">
+        <div class="hotel-header">
+            <h1>{{ hotel.name }}</h1>
+            <div class="location">
+                <i class="fa-solid fa-location-dot"></i> {{ hotel.location }}
+                <span style="margin-left: 15px;">⭐ 4.9 (Superhost)</span>
+            </div>
+        </div>
+
+        <div class="main-img-wrapper">
+            <img src="{{ hotel.img }}" 
+                 onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200'" 
+                 alt="{{ hotel.name }}">
+        </div>
+
+        <div style="max-width: 800px;">
+            <h3 class="section-title">About this Sanctuary</h3>
+            <p style="font-size: 17px; color: #475569;">{{ hotel.desc }}</p>
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+                <span style="background: #f1f5f9; padding: 8px 15px; border-radius: 10px; font-size: 14px;"><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+                <span style="background: #f1f5f9; padding: 8px 15px; border-radius: 10px; font-size: 14px;"><i class="fa-solid fa-snowflake"></i> AC</span>
+                <span style="background: #f1f5f9; padding: 8px 15px; border-radius: 10px; font-size: 14px;"><i class="fa-solid fa-utensils"></i> Breakfast</span>
+            </div>
+        </div>
+
+        <h3 class="section-title">Visual Tour & Views</h3>
+        <div class="gallery-grid">
+            {% for photo in hotel.gallery %}
+                <img src="{{ photo }}" 
+                     onerror="this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600'" 
+                     alt="Hotel Gallery View">
+            {% endfor %}
+        </div>
+
+        <h3 class="section-title">Select Your Accommodation</h3>
+        <div class="room-list">
+            {% for room in hotel.rooms %}
+            <div class="room-card">
+                <div class="room-info">
+                    <h4>{{ room.type }}</h4>
+                    <span class="status-badge {% if room.status == 'Available' %}available{% elif 'Left' in room.status %}limited{% else %}soldout{% endif %}">
+                        {{ room.status }}
+                    </span>
+                    <p style="font-size: 13px; color: var(--accent); margin-top: 10px;"><i class="fa-solid fa-check"></i> Non-refundable · Free cancellation within 24h</p>
+                </div>
+                <div class="price-tag">
+                    <span class="amount">${{ room.price }}</span>
+                    <span>per night (incl. taxes)</span>
+                    <button class="btn-reserve" 
+                            {% if room.status == 'Sold Out' %}disabled{% endif %}
+                            onclick="location.href='/payment/{{ hotel.name }}/{{ room.price }}'">
+                        {% if room.status == 'Sold Out' %}Fully Booked{% else %}Reserve Now{% endif %}
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <footer>
+            <p>&copy; 2026 StayBnB Premium Services. Developed by MNU Students.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
