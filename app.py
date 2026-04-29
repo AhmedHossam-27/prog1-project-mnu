@@ -115,10 +115,9 @@ def login():
         return redirect(url_for('index'))
     return render_template('login.html')
 
-@app.route('/logout')
-def logout():
-    session.pop('user', None)
-    return redirect(url_for('index'))
+
+
+
 
 @app.route('/payment/<name>/<price>')
 def payment(name, price):
