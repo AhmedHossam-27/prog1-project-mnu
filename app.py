@@ -102,7 +102,10 @@ def index():
 
 
 
-
+@app.route('/hotel/<id>')
+def hotel_details(id):
+    hotel = hotels.get(id)
+    return render_template('details.html', hotel=hotel)
 
 
 @app.route('/login', methods=['GET', 'POST'])
