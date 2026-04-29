@@ -94,9 +94,11 @@ hotels = {
     }
 }
 
-@app.route('/')
-def index():
-    return render_template('index.html', hotels=hotels)
+
+
+
+
+
 
 @app.route('/hotel/<id>')
 def hotel_details(id):
