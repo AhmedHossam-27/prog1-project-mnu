@@ -21,6 +21,16 @@ A Python-based web application developed using **Flask** to browse and book luxu
 3. Run the app: `python app.py`
 4. Access via: `http://127.0.0.1:5000`
 
-### 5. Future Improvements
+### 6. Project Overview
+### Application Screenshots
+
+#### 1. Home Page
+![Home Page](screenshots/home.png)
+
+#### 2. Hotel Details
+![Details Page](screenshots/details.png)
+
+
+### 6. Future Improvements
 * Adding a database to save user bookings permanently.
 * Implementing a search filter for hotels by city.
