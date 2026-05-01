@@ -25,10 +25,10 @@ A Python-based web application developed using **Flask** to browse and book luxu
 ### Application Screenshots
 
 #### 1. Home Page
-![Home Page](screenshots/home.png)
+![Home Page](screenshots/home.png.jpeg)
 
 #### 2. Hotel Details
-![Details Page](screenshots/details.png)
+![Details Page](screenshots/details.png.jpeg)
 
 
 ### 6. Future Improvements
