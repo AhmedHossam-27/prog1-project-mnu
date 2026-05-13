@@ -123,9 +123,7 @@ def logout():
 
 
 
-@app.route('/payment/<name>/<price>')
-def payment(name, price):
-    return render_template('payment.html', name=name, price=price)
+
 
 @app.route('/admin')
 def admin():
